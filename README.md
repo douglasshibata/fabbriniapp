@@ -1,3 +1,41 @@
+# APP - Fabbrini
+<img src='https://github.com/douglasshibata/fabbrini/blob/main/src/assets/logo.png' logo='Logo do Fabbrini' />
+
+Utilizado para o gerenciamento da aplicação do Fabbrini.
+
+Desenvolvido utilizando a biblioteca ReactJS
+
+Para rodar a aplicação 
+
+Ter o Node.js instalado
+
+Para verificar a versão.
+```bash
+node -v
+```
+
+Ter o gerenciador de pacotes do Node.js que é o NPM.
+Para verificar a versão
+```bash
+npm -v
+```
+
+Copiar o .env.example para .env e configurar as variáveis
+```bash
+cp .env.example ~/Path/to/folder/.env
+```
+
+Adicionar a url do backend para que seja feita a conexão com o banco de dados
+```bash
+REACT_APP_API_URL=
+```
+
+Baixar as dependencias
+```bash
+npm install 
+```
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
