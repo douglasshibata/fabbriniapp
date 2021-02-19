@@ -119,7 +119,6 @@ export default function Cadastrar() {
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-      {error&&<Alert  severity='warning' >{error}</Alert>}
       <div className={classes.paper}>
       <Typography component="h4" variant="h5" className={classes.text_login}>
             Faça o seu Cadastro
@@ -128,8 +127,8 @@ export default function Cadastrar() {
                     <Alert severity="error">
                         {error}
                     </Alert>}
-                {loading ? <ReactLoading type={'spin'} color={'#123'}  height={'20%'} width={'20%'} /> : <></>}
                 <form className={classes.form} onSubmit={handleSubmit}>
+                {loading && <ReactLoading className={classes.loading} type={'spin'} color={'#123'}  height={'100%'} width={'20%'} /> }
                     <TextField
                         type="text"
                         variant="outlined"

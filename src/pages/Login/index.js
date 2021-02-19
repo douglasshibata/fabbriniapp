@@ -86,10 +86,10 @@ export default function Login() {
           history.push('/perfil')
       } catch (error) {
           setLoading(false)
-          console.log(error.response);
-        //   if (error.response.data.message) {
-        //       setErro(error.response.data.message.error)
-        //   } else if (error.response.data[0].field === 'password') setErro('Senha inválida')
+          console.log(error.response.data);
+           if (error.response.data.error) {
+               setErro(error.response.data.error.message)
+           }
       }
   }
   return (
@@ -97,12 +97,12 @@ export default function Login() {
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-      {error&&<Alert  severity='warning' >{error}</Alert>}
       <div className={classes.paper}>
           <Typography component="h4" variant="h5" className={classes.text_login}>
             Faça o seu Login
             
           </Typography>
+      {error&&<Alert  severity='warning' >{error}</Alert>}
             <form className={classes.form} noValidate onSubmit={handleSubmit}>
             {loading? <ReactLoading className={classes.loading} type={'spin'} color={'#6BC4EC'} height={'20%'} width={'20%'} />:<></>}
             <TextField
