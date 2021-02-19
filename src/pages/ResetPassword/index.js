@@ -5,7 +5,7 @@ import api from '../../services/api';
 import { Link, useHistory } from 'react-router-dom';
 import ReactLoading from 'react-loading';
 import { Alert } from '@material-ui/lab';
-import logo from '../../assets/slogan.png'
+import logo from '../../assets/logo.png'
 import imagemLateral from '../../assets/lado_inicial.jpeg';
 
 
@@ -82,6 +82,7 @@ export default function ResetPassword(props) {
     const classes = useStyles();
     const [tokenResetSenha, setToken] = useState(props.match.params.token);
     const [senha, setsenha] = useState('');
+    const [email, setEmail] = useState('');
     const [confirmsenha, setConfirmsenha] = useState('');
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false);
@@ -90,7 +91,7 @@ export default function ResetPassword(props) {
     async function handleSubmit(e) {
         e.preventDefault();
         setToken(props.match.params.token)
-        const data = { tokenResetSenha, senha }
+        const data = { tokenResetSenha, senha,email }
         try {
             setLoading(true)
 
@@ -107,17 +108,8 @@ export default function ResetPassword(props) {
         } catch (error) {
             setLoading(false)
             console.log(error.response.data);
-            if (error.response.data.message) {
-                let mensagemErro = error.response.data.message.error;
-                setError(mensagemErro)
-                alert(mensagemErro)
-            }
-            if (error.response.data.error) {
-                let mensagemErro = error.response.data.error.message;
-                setError(mensagemErro)
-                alert(mensagemErro)
-
-            }
+            setError(error.response.data.error)
+            alert(error.response.data.error)
         }
 
     }
@@ -127,7 +119,6 @@ export default function ResetPassword(props) {
 
             <Grid item xs={false} sm={4} md={7} className={classes.image} />
             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                {error && <Alert severity='warning' >{error}</Alert>}
                 <div className={classes.paper}>
 
 
@@ -141,6 +132,18 @@ export default function ResetPassword(props) {
                         </Alert>}
                     {loading ? <ReactLoading type={'spin'} color={'#123'} height={'20%'} width={'20%'} /> : <></>}
                     <form className={classes.form} onSubmit={handleSubmit}>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="email"
+                            label="Confirme o seu email"
+                            type="email"
+                            id="email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                        />
                         <TextField
                             variant="outlined"
                             margin="normal"
