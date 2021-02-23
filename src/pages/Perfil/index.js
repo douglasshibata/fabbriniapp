@@ -4,9 +4,11 @@ import Navbar from '../Navbar';
 import api from '../../services/api'
 import Checkbox from '@material-ui/core/Checkbox';
 import { Alert } from '@material-ui/lab';
+import DataPaciente from './DataPaciente';
+import DataProfissional from './DataProfissional';
 
-function Perfil() {
-    const [dataUsuario, setDataUsuario] = useState([])
+function Perfil(props) {
+    const [dataUsuario, setDataUsuario] = useState()
     const [ehMedico, setEhMedico] = useState(false);
     const [paciente, setPaciente] = useState(true);
     useEffect(() => {
@@ -14,7 +16,6 @@ function Perfil() {
         const getDataUsuario = async () => {
             try {
                 const response = await api.get('/perfil', { headers: { _id: idUsuario } });
-                console.log(response.data);
                 setDataUsuario(response.data.user)
                 setEhMedico(response.data.user.ehMedico)
             } catch (error) {
@@ -24,7 +25,6 @@ function Perfil() {
         }
         getDataUsuario()
     }, []);
-
     localStorage.setItem('ehMedico', ehMedico);
     return (
         <>
@@ -55,13 +55,16 @@ function Perfil() {
                     }
                     label="Sou profissional da Saúde"
                 />
-                {/* {ehMedico ?
+                {dataUsuario && (
+                    ehMedico ?
                     <>
-                     <Alert severity='warning' >Para Ativar o perfil como médico, por favor complete os seus dados e salve</Alert>
-                        <DataProfessional items={items} updateState={updateState} />
-                    </> : <>
-                        <DataProfile items={items} updateState={updateState} />
-                    </>} */}
+                    {!dataUsuario.ehMedico&&  <Alert severity='warning' >Para Ativar o perfil como médico, por favor complete os seus dados e salve</Alert>}
+                            <DataProfissional data={dataUsuario} />
+                        </> : <>
+                            <DataPaciente data={dataUsuario} />
+                        </>
+                )
+                }
             </Container>
         </>
     )
