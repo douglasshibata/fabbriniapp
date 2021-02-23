@@ -10,6 +10,7 @@ import DetalheProfissional from "./pages/ListaProfissionais/detalhe";
 import Login from "./pages/Login";
 import Perfil from "./pages/Perfil";
 import ResetPassword from "./pages/ResetPassword";
+import VideoChamada from "./pages/VideoChamada";
 import { isAuthenticated } from "./services/auth";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -37,6 +38,7 @@ const Routes = () => (
       <PrivateRoute path='/detalhes/:id' component={DetalheProfissional}/>
       <PrivateRoute path='/about' component={About}/>
       <PrivateRoute path='/help' component={Help}/>
+      <PrivateRoute path='/videochamada/:id' component={VideoChamada}/>
       <Route path="*" component={ErrorPage} />
     </Switch>
   </BrowserRouter>
