@@ -28,11 +28,10 @@ function DataProfissional(props) {
 
               </IconButton>
               <IconButton
-              style={{color:'red'}}
+                style={{ color: 'red' }}
                 aria-label="Video"
               >
-                <VideoCall />
-
+                <Link to={`/videochamada/${data._id}`}> <VideoCall /></Link>
               </IconButton>
             </CardActions>
 
