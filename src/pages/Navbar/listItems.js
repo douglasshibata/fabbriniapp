@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 import './style.css';
 
 const ehMedico = localStorage.getItem('ehMedico');
-console.log(typeof ehMedico);
 export const mainListItems = (
   <div>
     <Link to='/perfil' className='removeLink'>
