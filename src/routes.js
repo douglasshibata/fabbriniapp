@@ -7,6 +7,8 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Help from "./pages/Help";
 import ListaProfissionais from "./pages/ListaProfissionais";
 import DetalheProfissional from "./pages/ListaProfissionais/detalhe";
+import ListaDePacientes from "./pages/ListaPacientes";
+import DetalhePaciente from "./pages/ListaPacientes/detalhe";
 import Login from "./pages/Login";
 import Perfil from "./pages/Perfil";
 import ResetPassword from "./pages/ResetPassword";
@@ -35,7 +37,9 @@ const Routes = () => (
       <Route path='/forgot-password' component={ForgotPassword} />
       <PrivateRoute path='/perfil' component={Perfil}/>
       <PrivateRoute path='/listaProfissionais' component={ListaProfissionais}/>
+      <PrivateRoute path='/pacientes' component={ListaDePacientes}/>
       <PrivateRoute path='/detalhes/:id' component={DetalheProfissional}/>
+      <PrivateRoute path='/detalhesPacientes/:id' component={DetalhePaciente}/>
       <PrivateRoute path='/about' component={About}/>
       <PrivateRoute path='/help' component={Help}/>
       <PrivateRoute path='/videochamada/:id' component={VideoChamada}/>
