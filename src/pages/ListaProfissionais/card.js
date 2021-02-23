@@ -9,11 +9,11 @@ function DataProfissional(props) {
 
       return (
         <Grid item xs={12} sm={3}>
-          <Card key={data.id}>
+          <Card key={data._id}>
             <CardHeader
               avatar={
                 <Avatar c>
-                  {data.nome.substring(0, 1)}
+                  {data.firstName}
                 </Avatar>
               }
               title={data.nome}

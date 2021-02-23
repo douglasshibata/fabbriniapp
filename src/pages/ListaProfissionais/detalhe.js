@@ -10,8 +10,8 @@ function DetalheProfissional(props) {
     useEffect(() => {
         const getItems = async () => {
             try {
-                const response = await api.get(`/user/${props.match.params.id}`);
-                setDetalheProfissional(response.data)
+                const response = await api.get(`/perfil`,{headers:{_id: props.match.params.id}});
+                setDetalheProfissional(response.data.user)
             } catch (error) {
                 console.log(error);
             }
@@ -24,21 +24,17 @@ function DetalheProfissional(props) {
             <Navbar />
             <Container>
                 <Grid container spacing={3}>
-                    {detalheProfissional.map((value, index) => {
-                        return (
-                            <Grid item xs={6} key={value._id}>
+                            <Grid item xs={6} key={detalheProfissional._id}>
                                 <h2>Perfil</h2>
                                 <Grid item xs={6}>
-                                    {value.nome}
+                                    {detalheProfissional.nome}
                                 </Grid>
                                 <Grid item xs={6}>
-                                    {value.conselho}
+                                    {detalheProfissional.conselho}
                                 </Grid>
                             </Grid>
 
-                        )
-                    })}
-                </Grid>
+                </Grid> 
             </Container>
         </>
     )

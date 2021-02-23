@@ -8,27 +8,28 @@ import DataProfissional from './card';
 
 function ListaProfissionais() {
 
-  const [data, setData] = useState([])
+  const [data, setData] = useState('')
   const medico = [];
-
-  const getItems = async () => {
-    try {
-      const response = await api.get('/user');
-      setData(response.data)
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   useEffect(() => {
-    getItems()
-  }, []);
-  // data.forEach((value,index)=>{
-  //   if(value.ehMedico){
-  //     medico.push(value)
-  //   }
-  // })
-  console.log(data);
+    const getDataUsuario = async () => {
+        try {
+            const response = await api.get('/user');
+            setData(response.data.user)
+        } catch (error) {
+            console.log(error.response);
+            alert("Erro em carregar os dados")
+        }
+    }
+    getDataUsuario()
+}, []);
+
+if(data){
+  data.forEach((value,index)=>{
+    if(value.ehMedico){
+      medico.push(value)
+    }
+  })
+}
      return (
     <>
       <Navbar />
@@ -38,7 +39,7 @@ function ListaProfissionais() {
             <h1 style={{ margin: "20px 0", color: "#589303" }}>Profissionais</h1>
             <h3 style={{ margin: "20px 0", color: "#000" }}>Encontre o profissional certo para você</h3>
           </Grid>
-          {data.length > 0 ? 
+          {medico.length > 0 ? 
        <DataProfissional data={medico}/>
           :
           <Typography>
