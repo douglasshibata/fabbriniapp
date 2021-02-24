@@ -14,6 +14,8 @@ import Perfil from "./pages/Perfil";
 import ResetPassword from "./pages/ResetPassword";
 import VideoChamada from "./pages/VideoChamada";
 import { isAuthenticated } from "./services/auth";
+import AgendaProfissional from "./pages/Agenda";
+import AgendaPaciente from "./pages/Agenda/agendaPaciente";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -36,6 +38,8 @@ const Routes = () => (
       <Route path='/reset-password/:token' component={ResetPassword} />
       <Route path='/forgot-password' component={ForgotPassword} />
       <PrivateRoute path='/perfil' component={Perfil}/>
+      <PrivateRoute path='/agenda' component={AgendaPaciente}/>
+      <PrivateRoute path='/agendaProfissional' component={AgendaProfissional}/>
       <PrivateRoute path='/listaProfissionais' component={ListaProfissionais}/>
       <PrivateRoute path='/pacientes' component={ListaDePacientes}/>
       <PrivateRoute path='/detalhes/:id' component={DetalheProfissional}/>

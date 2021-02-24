@@ -23,14 +23,14 @@ export const mainListItems = (
     </Link>
     {ehMedico === 'true' ?
       <>
-        <Link to='/main' className='removeLink'>
+        {/* <Link to='/dashboard' className='removeLink'>
           <ListItem button>
             <ListItemIcon>
               <DashboardIcon />
             </ListItemIcon>
             <ListItemText primary="Dashboard" />
           </ListItem>
-        </Link>
+        </Link> */}
         <Link to='/pacientes' className='removeLink'>
           <ListItem button>
             <ListItemIcon>
@@ -48,25 +48,35 @@ export const mainListItems = (
         <ListItemText primary="Profissionais" />
       </ListItem>
     </Link>
-    <Link to='/agenda' className='removeLink'>
-      <ListItem button>
-        <ListItemIcon>
-          <AssignmentIcon />
-        </ListItemIcon>
-        <ListItemText primary="Agenda" />
-      </ListItem>
-    </Link>
     {ehMedico === 'true' ?
       <>
-        <Link to='/prontuario' className='removeLink'>
+        <Link to='/agendaProfissional' className='removeLink'>
+          <ListItem button>
+            <ListItemIcon>
+              <AssignmentIcon />
+            </ListItemIcon>
+            <ListItemText primary="Agenda" />
+          </ListItem>
+        </Link>
+        {/* <Link to='/prontuario' className='removeLink'>
           <ListItem button>
             <ListItemIcon>
               <AssignmentIcon />
             </ListItemIcon>
             <ListItemText primary="Prontuário" />
           </ListItem>
-        </Link>
-      </> : <div></div>}
+        </Link> */}
+      </> :
+
+      <Link to='/agenda' className='removeLink'>
+        <ListItem button>
+          <ListItemIcon>
+            <AssignmentIcon />
+          </ListItemIcon>
+          <ListItemText primary="Agenda" />
+        </ListItem>
+      </Link>
+    }
     <Link to='/about' className='removeLink'>
       <ListItem button>
         <ListItemIcon>
