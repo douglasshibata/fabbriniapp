@@ -25,36 +25,35 @@ function getSteps() {
   return ['Dados Pessoais', 'Identidade', 'Endereço', 'Plano de Saúde', 'Responsável', 'Confirmar Dados'];
 }
 
-
-
 export default function CompletarCadastro(props) {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
+  const [activeStep, setActiveStep] = useState(0);
   const [dados, setDados] = useState({
-    _id:props.dados._id,
+    _id: props.dados._id,
     cpfNumber: props.dados.cpfNumber,
-    cpfImages: "",
-    firstName: "",
-    familyName: "",
-    socialName: "",
-    title: "",
-    email: "",
-    senha: "",
-    rgNumber: "",
-    rgExpedition: "",
-    rgExpeditor: "",
-    rgExpeditorUf: "",
-    rgImages: "",
-    endZIP: "",
-    endState: "",
-    endCity: "",
-    endDistrict: "",
-    endDirection: "",
-    endComplement: "",
-    telefoneNumero: props.dados.telefones[0].numero,
-    telefoneTipo: props.dados.telefones[0].tipo,
+    cpfImages:  props.dados.cpfImages,
+    firstName: props.dados.firstName,
+    familyName: props.dados.familyName,
+    socialName: props.dados.socialName,
+    title: props.dados.title,
+    email: props.dados.email,
+    senha: props.dados.senha,
+    rgNumber: props.dados.rgNumber,
+    rgExpedition: props.dados.rgExpedition,
+    rgExpeditor: props.dados.rgExpeditor,
+    rgExpeditorUf: props.dados.rgExpeditorUf,
+    rgImages: props.dados.rgImages,
+    endZIP: props.dados.address.length !==0 ? props.dados.address[0].endZIP : "",
+    endState: props.dados.address.length !==0 ? props.dados.address[0].endState : "",
+    endCity: props.dados.address.length !==0 ? props.dados.address[0].endCity : "",
+    endDistrict: props.dados.address.length !==0 ? props.dados.address[0].endDistrict : "",
+    endDirection: props.dados.address.length !==0 ? props.dados.address[0].endDirection : "",
+    endComplement: props.dados.address.length !==0 ? props.dados.address[0].endComplement : "",
+    telefoneNumero:  props.dados.telefones.length !==0 ? props.dados.telefones[0].numero : "",
+    telefoneTipo: props.dados.telefones.length !==0 ?  props.dados.telefones[0].tipo : "",
     ehMedico: false,
+    ativo: props.dados.ativo,
   })
   const handleChange = e => {
     setDados({
@@ -62,12 +61,32 @@ export default function CompletarCadastro(props) {
       [e.target.name]: e.target.value
     })
   }
+  const handleFileChange = (e) => {
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    if(file){
+      reader.readAsDataURL(file);
+      reader.onload = () =>{
+        var base64 = reader.result;
+        setDados({
+          ...dados,
+          [e.target.name]:base64
+        })
+      }
+      reader.onerror = (erro)=>{
+        console.log(erro)
+      }
+    }
+    
+  }
+
   function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
         return <PersonalInfo dados={dados} handleChange={handleChange} />;
       case 1:
-        return <PersonalID dados={dados} handleChange={handleChange} />;
+        return <PersonalID dados={dados} handleChange={handleChange} handleFileChange={handleFileChange} />;
       case 2:
         return <Address dados={dados} handleChange={handleChange} />;
       case 3:
@@ -88,7 +107,7 @@ export default function CompletarCadastro(props) {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
- 
+
   return (
     <div className={classes.root}>
       <Stepper activeStep={activeStep} alternativeLabel>

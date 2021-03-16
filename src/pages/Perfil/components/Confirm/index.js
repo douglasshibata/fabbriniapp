@@ -9,10 +9,11 @@ export default function ConfirmarDados(props) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  console.log(props)
   const dados =  ({
     _id:props.dados._id,
     cpfNumber: props.dados.cpfNumber,
-  cpfImages: "",
+  cpfImages:  props.dados.cpfImages,
   firstName: props.dados.firstName,
   familyName: "",
   socialName: "",
@@ -23,7 +24,7 @@ export default function ConfirmarDados(props) {
   rgExpedition:"",
   rgExpeditor: "",
   rgExpeditorUf: "",
-  rgImages: "",
+  rgImages: props.dados.rgImages,
   address: [{
       endZIP:"",
       endState:"",
@@ -34,8 +35,8 @@ export default function ConfirmarDados(props) {
   }],
  
   telefones: [{
-      numero: props.dados.telefones[0].numero ,
-      tipo: props.dados.telefones[0].tipo
+      numero: props.dados.telefoneNumero ,
+      tipo: props.dados.telefoneTipo
   }],
   ativo: props.dados.ativo,
   planoSaude:{
@@ -108,7 +109,7 @@ export default function ConfirmarDados(props) {
         </ListItem>
         <ListItem>
           <ListItemText primary="CPF" secondary={dados.cpfNumber} />
-          <ListItemText primary="CPF" secondary={dados.cpfImages} />
+          <img src={dados.cpfImages} alt='Imagem cpf' width='10%' height='10%' />
         </ListItem>
         <ListItem>
           <ListItemText primary="Email" secondary={dados.email} />
@@ -119,6 +120,8 @@ export default function ConfirmarDados(props) {
         <ListItem>
           <ListItemText primary="RG" secondary={dados.rgNumber} />
           <ListItemText primary="rgExpedition" secondary={dados.rgExpedition} />
+          <img src={dados.rgImages} alt='Imagem do RG' width='10%' height='10%' />
+
         </ListItem>
       </List>
       <form onSubmit={handleSubmit}>

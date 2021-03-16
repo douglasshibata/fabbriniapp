@@ -86,36 +86,33 @@ export default function Cadastrar() {
             numero: telefoneNumero,
             tipo: telefoneTipo,
         })
-        if (telefones.length != 0) {
-            setAtivo(true)
-            const data = { cpfNumber, email, senha, firstName, telefones, ehMedico, ativo }
-            try {
-                setLoading(true)
-                setEhMedico(false)
-                if (senha === confirmsenha) {
-                    const response = await api.post('/user', data);
-                    login(response.data.token);
-                    setLoading(false)
-                    alert('Cadastro Realizado com sucesso')
-                    history.push('/')
-                } else {
-                    setLoading(false)
-                    setError('Senhas Não conferem')
-                    alert('Senhas Não conferem')
-                }
-            } catch (error) {
+        setAtivo(true)
+        const data = { cpfNumber, email, senha, firstName, telefones, ehMedico, ativo }
+        try {
+            setLoading(true)
+            setEhMedico(false)
+            if (senha === confirmsenha) {
+                const response = await api.post('/user', data);
+                login(response.data.token);
                 setLoading(false)
-                console.log(error.response.data);
-                console.log(error.response.data.message);
-                if (error.response.data.message) {
-                    let mensagemErro = error.response.data.message.error;
-                    setError(mensagemErro)
-                    alert(mensagemErro)
-                }
+                alert('Cadastro Realizado com sucesso')
+                history.push('/')
+            } else {
+                setLoading(false)
+                setError('Senhas Não conferem')
+                alert('Senhas Não conferem')
             }
-        }else{
-            setError("Algo deu errado, clique no botão novamente. Por favor")
+        } catch (error) {
+            setLoading(false)
+            console.log(error.response.data);
+            console.log(error.response.data.message);
+            if (error.response.data.message) {
+                let mensagemErro = error.response.data.message.error;
+                setError(mensagemErro)
+                alert(mensagemErro)
+            }
         }
+
 
     }
     return (

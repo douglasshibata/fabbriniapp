@@ -71,7 +71,7 @@ export default function Address({ dados, handleChange }) {
       </Grid>   
         
         <Grid item sm={6}>
-      <TextField
+     {/*  <TextField
         variant="outlined"
         label="Imagem do RG"
         type='file'
@@ -80,7 +80,7 @@ export default function Address({ dados, handleChange }) {
         name='rgImages'
         margin="normal"
         fullWidth
-      />
+      /> */}
          </Grid>
       
     </Grid>
