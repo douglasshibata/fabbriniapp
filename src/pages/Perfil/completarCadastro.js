@@ -50,10 +50,19 @@ export default function CompletarCadastro(props) {
     endDistrict: props.dados.address.length !==0 ? props.dados.address[0].endDistrict : "",
     endDirection: props.dados.address.length !==0 ? props.dados.address[0].endDirection : "",
     endComplement: props.dados.address.length !==0 ? props.dados.address[0].endComplement : "",
+    endNumber: props.dados.address.length !==0 ? props.dados.address[0].endNumber : "",
     telefoneNumero:  props.dados.telefones.length !==0 ? props.dados.telefones[0].numero : "",
     telefoneTipo: props.dados.telefones.length !==0 ?  props.dados.telefones[0].tipo : "",
     ehMedico: false,
     ativo: props.dados.ativo,
+    planoSaudeNumero:  props.dados.planoSaude.length !==0 ? props.dados.planoSaude[0].numero : "",
+    planoSaudeTipo:   props.dados.planoSaude.length !==0 ? props.dados.planoSaude[0].tipo : "",
+    planoSaudePlano:   props.dados.planoSaude.length !==0 ? props.dados.planoSaude[0].plano : "",
+    planoSaudeOperadora:   props.dados.planoSaude.length !==0 ? props.dados.planoSaude[0].operadora : "",
+    planoSaudeImagem:  props.dados.planoSaude.length !==0 ? props.dados.planoSaude[0].imagem : "",
+    responsavelNome:  props.dados.responsavel.length !==0 ? props.dados.responsavel[0].nome : "",
+    responsavelContato:  props.dados.responsavel.length !==0 ? props.dados.responsavel[0].contato : "",
+    responsavelGrauParentesco:  props.dados.responsavel.length !==0 ? props.dados.responsavel[0].grauParentesco : "",
   })
   const handleChange = e => {
     setDados({
@@ -90,7 +99,7 @@ export default function CompletarCadastro(props) {
       case 2:
         return <Address dados={dados} handleChange={handleChange} />;
       case 3:
-        return <HealthInfo dados={dados} handleChange={handleChange} />;
+        return <HealthInfo dados={dados} handleChange={handleChange}  handleFileChange={handleFileChange} />;
       case 4:
         return <Responsavel dados={dados} handleChange={handleChange} />;
       case 5:

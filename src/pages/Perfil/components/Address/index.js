@@ -4,7 +4,6 @@ import { Grid } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import uf from '../../../../assets/uf.json';
 
-
 export default function Address({ dados, handleChange }) {
   return (
     <Grid container spacing={3}>
@@ -47,40 +46,51 @@ export default function Address({ dados, handleChange }) {
          </Grid>
       <Grid item sm={6}>
       <TextField
-        placeholder="Número do RG"
-        label="RG"
-        name="rgNumber"
+        placeholder="Nome da Rua, Av."
+        label="Nome da Rua"
+        name="endDirection"
         variant="outlined"
         onChange={handleChange}
-        defaultValue={dados.rgNumber}
+        defaultValue={dados.endDirection}
         margin="normal"
         fullWidth
         />
       </Grid>
-      <Grid item sm={6}>
+      <Grid item sm={4}>
       <TextField
-        placeholder="Órgão expeditor do RG"
-        label="Órgão expeditor do RG"
-        name="rgNumber"
+        placeholder="Bairro"
+        label="Bairro"
+        name="endDistrict"
         variant="outlined"
         onChange={handleChange}
-        defaultValue={dados.rgExpeditor}
+        defaultValue={dados.endDistrict}
         margin="normal"
         fullWidth
         />
-      </Grid>   
-        
-        <Grid item sm={6}>
-     {/*  <TextField
+      </Grid>    
+        <Grid item sm={4}>
+        <TextField
+        placeholder="Complemento"
+        label="Complemento"
+        name="endComplement"
         variant="outlined"
-        label="Imagem do RG"
-        type='file'
         onChange={handleChange}
-        defaultValue={dados.rgImages}
-        name='rgImages'
+        defaultValue={dados.endComplement}
         margin="normal"
         fullWidth
-      /> */}
+        />
+         </Grid>
+        <Grid item sm={4}>
+        <TextField
+        placeholder="Número"
+        label="Número"
+        name="endNumber"
+        variant="outlined"
+        onChange={handleChange}
+        defaultValue={dados.endNumber}
+        margin="normal"
+        fullWidth
+        />
          </Grid>
       
     </Grid>

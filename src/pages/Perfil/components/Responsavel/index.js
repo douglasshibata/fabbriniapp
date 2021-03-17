@@ -1,61 +1,41 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
-export default function Responsavel({dados,handleChange}){
-  return(
+export default function Responsavel({ dados, handleChange }) {
+  return (
     <>
-        <TextField
-              placeholder="Nome"
-              label="Nome"
-              name="firstName"
-              variant="outlined"
-              onChange={handleChange}
-              defaultValue={dados.firstName}
-              margin="normal"
-              fullWidth
-              required
-            />
-            <TextField
-              placeholder="Sobrenome"
-              label="Sobrenome"
-              variant="outlined"
-              onChange={handleChange}
-              defaultValue={dados.familyName}
-              name='familyName'
-              margin="normal"
-              fullWidth
-              required
-            />
-        <TextField
-              placeholder="Nome Social"
-              label="Nome Social"
-              name="socialName"
-              variant="outlined"
-              onChange={handleChange}
-              defaultValue={dados.socialName}
-              margin="normal"
-              fullWidth
-            />
-            <TextField
-              placeholder="Título de tratamento a ser utilizado antes do nome do paciente."
-              label="Título"
-              name='title'
-              variant="outlined"
-              onChange={handleChange}
-              defaultValue={dados.title}
-              margin="normal"
-              fullWidth
-            />
-            {/* <TextField
-              placeholder="Senha"
-              label="Senha"
-              name='senha'
-              variant="outlined"
-              onChange={handleChange}
-              defaultValue={dados.senha}
-              margin="normal"
-              fullWidth
-            /> */}
+      <TextField
+        placeholder="Nome do responsável"
+        label="Nome do responsável"
+        name="responsavelNome"
+        variant="outlined"
+        onChange={handleChange}
+        defaultValue={dados.responsavelNome}
+        margin="normal"
+        fullWidth
+        required
+      />
+      <TextField
+        placeholder="Contato do responsável"
+        label="Contato do responsável"
+        variant="outlined"
+        onChange={handleChange}
+        defaultValue={dados.responsavelContato}
+        name='responsavelContato'
+        margin="normal"
+        fullWidth
+        required
+      />
+      <TextField
+        placeholder="Grau de Parentesco"
+        label="Grau de Parentesco"
+        name="responsavelGrauParentesco"
+        variant="outlined"
+        onChange={handleChange}
+        defaultValue={dados.responsavelGrauParentesco}
+        margin="normal"
+        fullWidth
+      />
     </>
   )
 }
