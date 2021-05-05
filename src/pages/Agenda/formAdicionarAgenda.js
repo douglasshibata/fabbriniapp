@@ -27,7 +27,7 @@ export default function FormAdicionarAgenda() {
     getItems()
   }, []);
   if(dados){
-    dados.forEach((value,index)=>{
+    dados.forEach((value)=>{
       if(value.ehMedico){
         profissional.push(value)
       }
@@ -43,7 +43,8 @@ export default function FormAdicionarAgenda() {
       if (response) setTimeout(function () { alert('Agendado Com sucesso'); window.location.reload() }, 100)
 
     } catch (error) {
-      console.log(error.response)
+      alert(error.response.data.message.error);
+      console.log(error.response);
     }
   }
 
@@ -71,7 +72,9 @@ export default function FormAdicionarAgenda() {
               getOptionLabel={(option) => option.firstName}
               renderOption={(option) => (
                 <React.Fragment>
-                  {option.firstName}
+                  <p>
+                  {option.firstName} {option.familyName} 
+                  </p>
                 </React.Fragment>
               )}
               onChange={(event, value) => setCpfPaciente(value.cpfNumber)}

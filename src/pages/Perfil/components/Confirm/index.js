@@ -106,7 +106,7 @@ export default function ConfirmarDados(props) {
           <ListItemText primary="Data de expedição" secondary={dados.rgExpedition} />
           <ListItemText primary="Instituição de expedição" secondary={dados.rgExpeditor} />
           <ListItemText primary="UF expedição" secondary={dados.rgExpeditorUf} />
-          <img src={dados.rgImages} alt='Imagem do RG' width='10%' height='10%' />
+         {/*  <img src={dados.rgImages} alt='Imagem do RG' width='10%' height='10%' /> */}
         </ListItem>
         { dados.address &&
         <ListItem>
@@ -133,7 +133,7 @@ export default function ConfirmarDados(props) {
           }
         {dados.responsavel && 
         <ListItem>
-            <ListItemText primary="CEP" secondary={dados.responsavel.contato} />
+            <ListItemText primary="Contato Emergência" secondary={dados.responsavel.contato} />
             <ListItemText primary="Estado" secondary={dados.responsavel.contato} />
             <ListItemText primary="Cidade" secondary={dados.responsavel.contato} />
             <ListItemText primary="Bairro" secondary={dados.responsavel.contato} />

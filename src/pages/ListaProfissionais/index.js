@@ -8,13 +8,18 @@ import DataProfissional from './card';
 
 function ListaProfissionais() {
 
-  const [data, setData] = useState('')
-  const medico = [];
+  const [data, setData] = useState([])
   useEffect(() => {
     const getDataUsuario = async () => {
         try {
-            const response = await api.get('/user');
-            setData(response.data.user)
+            const response = await api.get('/doctor/page'
+            /* ,{
+              params:{
+                page: 0,
+                limit: 10,
+              }
+            } */);
+            setData(response.data.results)
         } catch (error) {
             console.log(error.response);
             alert("Erro em carregar os dados")
@@ -22,14 +27,6 @@ function ListaProfissionais() {
     }
     getDataUsuario()
 }, []);
-
-if(data){
-  data.forEach((value,index)=>{
-    if(value.ehMedico){
-      medico.push(value)
-    }
-  })
-}
      return (
     <>
       <Navbar />
@@ -39,8 +36,8 @@ if(data){
             <h1 style={{ margin: "20px 0", color: "#589303" }}>Profissionais</h1>
             <h3 style={{ margin: "20px 0", color: "#000" }}>Encontre o profissional certo para você</h3>
           </Grid>
-          {medico.length > 0 ? 
-       <DataProfissional data={medico}/>
+          {data.length > 0 ? 
+       <DataProfissional data={data}/>
           :
           <Typography>
             Não Há Profissionais Cadastrados

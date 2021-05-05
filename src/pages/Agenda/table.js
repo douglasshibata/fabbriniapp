@@ -2,7 +2,7 @@ import React from 'react'
 import { Table, TableContainer, Paper, TableHead, TableRow, TableCell, TableBody, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import DuoIcon from '@material-ui/icons/Duo';
-import { format, isBefore } from 'date-fns'
+import { format } from 'date-fns'
 import { ptBR } from "date-fns/locale";
 import NomePaciente from './namePaciente';
 import DadosProfissional from './nameProfissional';
@@ -14,10 +14,8 @@ const useStyles = makeStyles({
 });
 function DataTable(props) {
   const classes = useStyles();
-  const ehMedico = localStorage.getItem('ehMedico');
   const items = props.dados.map((value,index) => {
     const date = Date.parse(value.horario);
-    const dataAtual = new Date();
     const formattedDate = format(
       date,
       "'Dia' dd 'de' MMMM' de 'yyyy' às ' HH:mm'h'", { locale: ptBR }

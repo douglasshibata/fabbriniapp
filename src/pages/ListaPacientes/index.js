@@ -12,8 +12,8 @@ function ListaDePacientes() {
   useEffect(() => {
     const getDataUsuario = async () => {
         try {
-            const response = await api.get('/user');
-            setData(response.data.user)
+            const response = await api.get('/user/page');
+            setData(response.data.results)
         } catch (error) {
             console.log(error.response);
             alert("Erro em carregar os dados")

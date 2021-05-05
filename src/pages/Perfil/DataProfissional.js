@@ -30,7 +30,7 @@ function DataProfissional(props) {
           <li>Número: {value.numero}</li>
           <li>Tipo: {value.tipo}</li>
       </ul>
-  ))
+  ));
   return (
     <Container>
        <Card className={classes.root} key={pacientes._id}>

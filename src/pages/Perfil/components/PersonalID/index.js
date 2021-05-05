@@ -40,7 +40,7 @@ export default function PersonalID({ dados, handleChange,handleFileChange }) {
           />
         </Button>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={6}>
         <TextField
           placeholder="Número do RG"
           label="RG"
@@ -52,7 +52,7 @@ export default function PersonalID({ dados, handleChange,handleFileChange }) {
           fullWidth
         />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={6}>
         <TextField
           placeholder="Órgão expeditor do RG"
           label="Órgão expeditor do RG"
@@ -64,7 +64,32 @@ export default function PersonalID({ dados, handleChange,handleFileChange }) {
           fullWidth
         />
       </Grid>
-      <Grid item xs={4}>
+    {/*   <Grid item xs={6}>
+      <label>Imagem do RG</label>
+          <Button
+            variant="outlined" component="label"
+            startIcon={<InsertPhotoIcon/>}
+            fullWidth
+          >          
+  <input
+              type="file"
+              accept="image/*"
+              name='rgImages'
+              onChange={handleFileChange}            />
+          </Button>
+        </Grid> */}
+        <Grid item xs={6}>
+        <label>Data de Expedição</label>
+          <TextField
+            variant="outlined"
+            type='date'
+            onChange={handleChange}
+            defaultValue={dados.rgExpedition}
+            name='rgExpedition'
+            margin="normal"
+          />
+        </Grid>
+        <Grid item xs={6}>
       <label>UF Expeditor</label>
         <Autocomplete
           id='rgExpeditorUf'
@@ -78,31 +103,6 @@ export default function PersonalID({ dados, handleChange,handleFileChange }) {
           renderInput={(params) => <TextField {...params} label="UF Expeditor" variant="outlined" />}
         />
       </Grid>
-      <Grid item xs={6}>
-      <label>Imagem do RG</label>
-          <Button
-            variant="outlined" component="label"
-            startIcon={<InsertPhotoIcon/>}
-            fullWidth
-          >          
-  <input
-              type="file"
-              accept="image/*"
-              name='rgImages'
-              onChange={handleFileChange}            />
-          </Button>
-        </Grid>
-        <Grid item xs={6}>
-        <label>Data de Expedição</label>
-          <TextField
-            variant="outlined"
-            type='date'
-            onChange={handleChange}
-            defaultValue={dados.rgExpedition}
-            name='rgExpedition'
-            margin="normal"
-          />
-        </Grid>
       </Grid>
   )
 }

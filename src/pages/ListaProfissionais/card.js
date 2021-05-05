@@ -1,22 +1,21 @@
-import React from 'react'
+import React from 'react';
 import { Card, CardActions, CardHeader, IconButton, Avatar, Grid } from '@material-ui/core';
 import { Today, PermIdentity, VideoCall } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
-function DataProfissional(props) {
+function DataProfissional({ data }) {
   return (
-    props.data.map(data => {
-
+    data.map((data) => {
       return (
-        <Grid item xs={12} sm={3}>
-          <Card key={data._id}>
+        <Grid key={data._id} item xs={12} sm={3}>
+          <Card>
             <CardHeader
               avatar={
-                <Avatar c>
-                  {data.firstName}
+                <Avatar>
+                  {data.firstName.substring(0,1)}
                 </Avatar>
               }
-              title={data.nome}
+              title={data.firstName}
               subheader={data.especialidade}
             />
             <CardActions disableSpacing>
@@ -37,10 +36,9 @@ function DataProfissional(props) {
 
           </Card>
         </Grid>
-
-      )
+      );
     })
-  )
+  );
 }
 
-export default DataProfissional
+export default DataProfissional;

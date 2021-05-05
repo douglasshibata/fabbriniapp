@@ -163,7 +163,7 @@ export default function CompletarCadastroProfissional(props) {
         type="text"
         id="registro"
         onChange={e => setRegistro(e.target.value)}
-        value={registro} required />
+        value={registro} />
       <Grid container spacing={2}>
         <Grid item xs={8}>
 

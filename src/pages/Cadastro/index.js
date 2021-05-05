@@ -19,11 +19,6 @@ const useStyles = makeStyles((theme) => ({
             theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-    }, paper: {
-        marginTop: theme.spacing(6),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
     },
     link: {
         textDecoration: 'none',
@@ -45,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute'
     },
     paper: {
-        margin: theme.spacing(0, 4),
+        margin: theme.spacing(0, 2),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -85,35 +80,41 @@ export default function Cadastrar() {
         setTelefones({
             numero: telefoneNumero,
             tipo: telefoneTipo,
-        })
-        setAtivo(true)
-        const data = { cpfNumber, email, senha, firstName, telefones, ehMedico, ativo }
-        try {
-            setLoading(true)
-            setEhMedico(false)
-            if (senha === confirmsenha) {
-                const response = await api.post('/user', data);
-                login(response.data.token);
+        });
+        if(telefones.length !== 0){
+            setAtivo(true)
+            const data = { cpfNumber, email, senha, firstName, telefones, ehMedico, ativo }
+            try {
+                setLoading(true)
+                setEhMedico(false)
+                if (senha === confirmsenha) {
+                    const response = await api.post('/user', data);
+                    login(response.data.token);
+                    setLoading(false)
+                    alert('Cadastro Realizado com sucesso')
+                    history.push('/')
+                } else {
+                    setLoading(false)
+                    setError('Senhas Não conferem')
+                    alert('Senhas Não conferem')
+                }
+            } catch (error) {
                 setLoading(false)
-                alert('Cadastro Realizado com sucesso')
-                history.push('/')
-            } else {
-                setLoading(false)
-                setError('Senhas Não conferem')
-                alert('Senhas Não conferem')
+                console.log(error.response.data);
+                console.log(error.response.data.message);
+                if (error.response.data.message) {
+                    let mensagemErro = error.response.data.message.error;
+                    setError(mensagemErro)
+                    alert(mensagemErro)
+                }
             }
-        } catch (error) {
-            setLoading(false)
-            console.log(error.response.data);
-            console.log(error.response.data.message);
-            if (error.response.data.message) {
-                let mensagemErro = error.response.data.message.error;
-                setError(mensagemErro)
-                alert(mensagemErro)
-            }
+        }else{
+            setLoading(true);
+            setTimeout(()=>{
+                setError('Algo deu errado, tente Novamente')
+                setLoading(false);
+            },100)
         }
-
-
     }
     return (
         <Grid container component="main" className={classes.root}>
