@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, Button, Dialog } from '@material-ui/core';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
@@ -53,14 +53,14 @@ export default function EditPaciente(props) {
     return (
         <div>
             <Button variant="contained" color="primary" onClick={handleClickOpen}>
-               Completar Cadastro <EditIcon/>
-      </Button>
+                Completar Cadastro <EditIcon />
+            </Button>
             <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
                 <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-                   Editar os dados
-        </DialogTitle>
+                    Editar os dados
+                </DialogTitle>
                 <DialogContent dividers>
-                   <CompletarCadastro dados={props.dados}/>
+                    <CompletarCadastro dados={props.dados} />
                 </DialogContent>
             </Dialog>
         </div>

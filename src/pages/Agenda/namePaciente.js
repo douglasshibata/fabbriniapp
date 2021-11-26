@@ -16,7 +16,7 @@ function NomePaciente(props) {
             }
         }
         getDataUsuario()
-    }, []);
+    }, [idUsuario]);
 
     return (
         <>

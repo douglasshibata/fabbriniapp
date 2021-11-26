@@ -16,7 +16,7 @@ function DadosProfissional(props) {
             }
         }
         getDataUsuario()
-    }, []);
+    }, [idUsuario]);
     return (
         <>
           

@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '18px',
         lineHeight: '21px',
         color: '#0071BC',
+        textDecoration: 'none'
     },
     root: {
         height: '100vh',
@@ -44,16 +45,7 @@ const useStyles = makeStyles((theme) => ({
             theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-    },
-    link: {
-        textDecoration: 'none',
-        fontSamily: 'Roboto',
-        fontStyle: 'normal',
-        fontWeight: 300,
-        fontSize: '18px',
-        lineHeight: '21px',
-        color: '#0071BC',
-    },
+    },    
     loading: {
         position: 'absolute'
     },
